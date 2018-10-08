@@ -15,8 +15,9 @@
 
 
 /* 1A 1B NC 1C 1D n1Y GND n2Y 2A 2B NC 2C 2D VCC */
-void test_7420(void)
-    {   
+uint8_t test_7420(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_1A | P_1B | P_NC1 | P_1C | P_1D | P_GND | BIT_L7);
         Direct_H=(BIT_H7 | P_2A | P_2B | P_NC2 | P_2C | P_2D | P_VCC);
         Port_L=(P_n1Y);
@@ -42,6 +43,7 @@ void test_7420(void)
 
         Port_L=0;
         Port_H=0;                                        
+	return res;
     }
 
 

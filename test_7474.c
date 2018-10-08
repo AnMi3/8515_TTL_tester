@@ -15,8 +15,9 @@
 
 
 /* n1RST 1D 1CLK n1SET 1Q n1Q GND n2Q 2Q n2SET 2CLK 2D n2RST VCC */
-void test_7474(void)
-    {   
+uint8_t test_7474(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_n1RST | P_1D | P_1CLK | P_n1SET | P_GND | BIT_L7);
         Direct_H=(BIT_H7 | P_n2SET | P_2CLK | P_2D | P_n2RST | P_VCC);
         Port_L=(P_n1SET);
@@ -41,7 +42,8 @@ void test_7474(void)
         res &= ((Pin_L==(P_n1RST | P_n1SET | P_n1Q)) && (Pin_H==(P_n2Q | P_n2SET | P_n2RST | P_VCC)));
 
         Port_L=0;
-        Port_H=0;                                        
+        Port_H=0;
+	return res;                                        
     }
 
 

@@ -19,8 +19,9 @@
 /* /1EN S1 1A3 1A2 1A1 1A0 1Y GND 2Y 2A0 2A1 2A2 2A3 S0 /2EN VCC */
 /* 74253 8-to-2 line 3-state noninverting data selector/multiplexer. */
 
-void test_74253(void)
-    {   
+uint8_t test_74253(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_n1EN | P_S1 | P_1A3 | P_1A2 | P_1A1 | P_1A0 | P_GND);
         Direct_H=(P_2A0 | P_2A1 | P_2A2 | P_2A3 | P_S0 | P_n2EN | P_VCC);
         Port_L=(P_1A2 | P_1A0);
@@ -65,6 +66,7 @@ void test_74253(void)
 
         Port_L=0;
         Port_H=0;                                        
+	return res;
     }
 
 

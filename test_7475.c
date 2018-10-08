@@ -18,8 +18,9 @@
 
 /* n1Q1 1D1 1D2 2LE VCC 2D1 2D2 n2Q2 2Q2 2Q1 n2Q1 GND 1LE n1Q2 1Q2 1Q1 */
 /* Dual 2-bit transparent latches with complementary outputs. */
-void test_7475(void)
-    {   
+uint8_t test_7475(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_1D1 | P_1D2 | P_2LE | P_VCC | P_2D1 | P_2D2);
         Direct_H=(P_GND | P_1LE);
         Port_L=(P_n1Q1 | P_VCC | P_n2Q2);
@@ -41,6 +42,7 @@ void test_7475(void)
 
         Port_L=0;
         Port_H=0;                                        
+	return res;
     }
 
 

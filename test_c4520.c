@@ -1,6 +1,6 @@
-void test_C4520(void)
-    {   
-        char i=0;
+uint8_t test_C4520(void)
+{
+		uint8_t res = 1;
         Direct_L=(BIT_L0 | BIT_L1 | BIT_L6 | BIT_L7);
         Direct_H=(BIT_H7 | BIT_H6 | BIT_H1 | BIT_H0);
         Port_L=(BIT_L6);
@@ -28,7 +28,7 @@ void test_C4520(void)
         delay1ms();
         res &= ((Pin_L==(BIT_L1 | BIT_L3)) && (Pin_H==(BIT_H6 | BIT_H4 | BIT_H0)));
 
-        for (i=0;i<10;i++){    
+        for (uint8_t i=0;i<10;i++){    
         Port_L=(BIT_L1);
         Port_H=(BIT_H6 | BIT_H0);
         Port_L=0;
@@ -38,4 +38,5 @@ void test_C4520(void)
 
         Port_L=0;
         Port_H=0;            
+	return res;
     }

@@ -22,8 +22,9 @@
 
 /* DIR A1 A2 A3 A4 A5 A6 A7 A8 GND B8 B7 B6 B5 B4 B3 B2 B1 /EN VCC */
 /* 74245 8-bit 3-state noninverting bus transceiver. */
-void test_74245(void)
-    {
+uint8_t test_74245(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_DIR | P_A1 | P_A2 | P_A3 | P_A4 | P_A5 | P_A6 | P_A7);
         Direct_H=(P_nEN | P_VCC);
         DDRE=1;
@@ -54,7 +55,8 @@ void test_74245(void)
 
         Port_L=0;
         Port_H=0;
-        PORTE=0;            
+        PORTE=0;
+	return res;
     }
 
 

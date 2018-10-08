@@ -1,7 +1,7 @@
 #include "ictester.h"
 
 
-uint8_t sym[4], seg, res = 0;
+uint8_t sym[4], seg;
 
 const uint8_t znak[] PROGMEM = {215,17,203,91,29,94,222,19,223,95, 15,216 ,66,0,206,142,204,198}; /* symbols codes */
 const uint8_t razr[] PROGMEM = {128,64,32,16}; /* segment select constants */
@@ -50,7 +50,7 @@ const uint8_t razr[] PROGMEM = {128,64,32,16}; /* segment select constants */
 
 const struct chip
 {
-    void (*test)();
+    uint8_t (*test)();
     uint8_t sym[3];
 } chips[] = 
 { // not more than 254 IC!!!
@@ -96,6 +96,7 @@ const struct chip
 
 #define _ICs (sizeof(chips)/sizeof(struct chip))
 
+/* interrupt for indicator update */
 ISR(TIMER0_OVF_vect)
 {
 	seg++;
@@ -104,19 +105,20 @@ ISR(TIMER0_OVF_vect)
 	Display_P = znak[sym[seg]];		/* write to display segment */
 }
 
-void test(uint8_t ic_num)
+uint8_t test(uint8_t ic_num)
 {
-    res = 1;						/* flag that will be reset by testing function */
     sym[0] = 12;					/* two horizontal lines as a testing process indicator */
-    
 
     /* set IC number for indicator */
 	sym[1] = chips[ic_num].sym[0] & 0x07;
     sym[2] = (chips[ic_num].sym[0] >> 4) & 0x07;
     sym[3] = chips[ic_num].sym[1];
     
-    chips[ic_num].test();			/* start test for selected IC */
-    sym[0] = res == 1 ? 10 : 11;
+    /* start test for selected IC */
+	uint8_t res = chips[ic_num].test();
+    sym[0] = res == 1 ? 10 : 11;	/* GOOD or BAD symbol */
+	
+	return res;
 }
 
 void menu(uint8_t sel)
@@ -133,11 +135,9 @@ void menu(uint8_t sel)
 uint8_t search(void)
 {
 	for (uint8_t i = 0; i < _ICs; i++ )
-	{
-		test(i);
-		if ( res == 1 ) // found
+		if ( test(i) == 1 )
 			return i;
-	}
+
 	sym[0] = sym[1] = sym[2] = sym[3] = 11;
 	return 255;	// not found
 }

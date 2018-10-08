@@ -18,8 +18,9 @@
 
 /* /RST Q0 D0 D1 Q1 D2 Q2 GND CLK Q3 D3 Q4 D4 D5 Q6 VCC */
 /* 74174 6-bit D flip-flop with reset. */
-void test_74174(void)
-    {   
+uint8_t test_74174(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_nRST | P_D0 | P_D1 | P_D2 | P_GND);
         Direct_H=(P_CLK | P_D3 | P_D4 | P_D5 | P_VCC);
         Port_H=(P_VCC);
@@ -49,7 +50,8 @@ void test_74174(void)
         res &= ((Pin_L==(P_nRST)) && (Pin_H==(P_VCC)));
 
         Port_L=0;
-        Port_H=0;                                        
+        Port_H=0; 
+	return res;                                       
     }
 
 

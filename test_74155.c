@@ -18,8 +18,9 @@
 
 /* 1EN1 n1EN2 S1 n1Y3 n1Y2 n1Y1 n1Y0 GND n2Y0 n2Y1 n2Y2 n2Y3 S0 n2EN2 n2EN1 VCC */
 /* 2-of-8 inverting decoder/demultiplexer with separate enables. */
-void test_74155(void)
-    {   
+uint8_t test_74155(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_1EN1 | P_n1EN2 | P_S1 | P_GND);
         Direct_H=(P_S0 | P_n2EN2 | P_n2EN1 | P_VCC);
         Port_L=(P_n1EN2);
@@ -65,7 +66,8 @@ void test_74155(void)
         res &= ((Pin_L==(P_1EN1 | P_S1 | P_n1Y2 | P_n1Y1 | P_n1Y0)) && (Pin_H==(P_n2Y0 | P_n2Y1 | P_n2Y2 | P_n2Y3 | P_S0 | P_n2EN1 | P_VCC)));
 
         Port_L=0;
-        Port_H=0;      
+        Port_H=0; 
+	return res;     
     }
 
 

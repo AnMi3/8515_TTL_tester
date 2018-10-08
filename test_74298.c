@@ -18,8 +18,9 @@
 
 /* 2A1 2A0 1A0 1A1 3A1 4A1 4A0 GND 3A0 S CLK 4Q 3Q 2Q 1Q VCC */
 /* 74298 8-to-4 line noninverting data selector/multiplexer with output registers. */
-void test_74298(void)
-    {
+uint8_t test_74298(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_2A1 | P_2A0 | P_1A0 | P_1A1 | P_3A1 | P_4A1 | P_4A0 | P_GND);
         Direct_H=(P_3A0 | P_S | P_CLK | P_VCC);
         Port_L=(P_2A1 | P_1A0 | P_4A1);
@@ -50,6 +51,7 @@ void test_74298(void)
 
         Port_L=0;
         Port_H=0;            
+	return res;
     }
 
 

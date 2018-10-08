@@ -16,8 +16,9 @@
 
 /* nCLK1 RST1 RST2 NC VCC NC NC Q2 Q1 GND Q3 Q0 NC nCLK0 */
 /* 4-bit asynchronous binary counter with /2 and /8 sections and reset.  */
-void test_7493(void)
-    {   
+uint8_t test_7493(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_nCLK1 | P_RST1 | P_RST2 | P_NC1 | P_VCC | P_NC2 | P_NC3 | BIT_L7);
         Direct_H=(BIT_H7 | P_GND | P_NC4 | P_nCLK0);
         Port_H=0;        
@@ -54,7 +55,8 @@ void test_7493(void)
         res &= ((Pin_H==0));
 
         Port_L=0;
-        Port_H=0;                                        
+        Port_H=0;
+	return res;                                        
     }
 
 

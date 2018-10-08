@@ -16,8 +16,9 @@
 
 /* 1A 1B 1Y 2A 2B 2Y GND 3Y 3A 3B 4Y 4A 4B VCC */
 /* Quad 2-input XOR gates. */
-void test_7486(void)
-    {   
+uint8_t test_7486(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_1A | P_1B | P_2A | P_2B | P_GND | BIT_L7);
         Direct_H=(BIT_H7 | P_3A | P_3B | P_4A | P_4B | P_VCC);
         Port_L=(P_1Y | P_2Y);
@@ -38,7 +39,8 @@ void test_7486(void)
         res &= ((Pin_L==(P_1A | P_1B | P_2A | P_2B)) && (Pin_H==(P_3A | P_3B | P_4A | P_4B | P_VCC)));
 
         Port_L=0;
-        Port_H=0;                                        
+        Port_H=0;
+	return res;                                        
     }
 
 

@@ -18,8 +18,9 @@
 
 /* U_D CLK P0 P1 P2 P3 /ENP GND /LOAD /ENT Q3 Q2 Q1 Q0 /RCO VCC */
 /* 74169 4-bit synchronous binary up/down counter with load and ripple carry output. */
-void test_74169(void)
-    {   
+uint8_t test_74169(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_U_D | P_CLK | P_P0 | P_P1 | P_P2 | P_P3 | P_nENP | P_GND);
         Direct_H=(P_nLOAD | P_nENT | P_VCC);
         Port_L=(P_P0 | P_P2);
@@ -57,7 +58,8 @@ void test_74169(void)
         res &= ((Pin_L==(P_U_D)) && (Pin_H==(P_nLOAD | P_nRCO | P_VCC)));
 
         Port_L=0;
-        Port_H=0;                                        
+        Port_H=0; 
+	return res;                                       
     }
 
 

@@ -18,8 +18,9 @@
 
 /* D P0 P1 P2 P3 CLK1 CLK2 GND /RST P4 P5 P6 Q7 P7 SH_LD VCC */
 /* 74166 8-bit parallel-in serial-out shift register with asynchronous reset */
-void test_74166(void)
-    {   
+uint8_t test_74166(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_D | P_P0 | P_P1 | P_P2 | P_P3 | P_CLK1 | P_CLK2 | P_GND);
         Direct_H=(P_nRST | P_P4 | P_P5 | P_P6 | P_P7 | P_SH_LD | P_VCC);
         Port_L=0;
@@ -47,7 +48,8 @@ void test_74166(void)
         res &= ((Pin_H==(P_nRST | P_SH_LD | P_VCC)));
 
         Port_L=0;
-        Port_H=0;                                        
+        Port_H=0; 
+	return res;                                       
     }
 
 

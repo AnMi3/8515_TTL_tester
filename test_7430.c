@@ -17,8 +17,9 @@
 /* A B C D E F GND nY NC NC G H NC VCC */
 /* 8-input NAND gate. */
 
-void test_7430(void)
-    {   
+uint8_t test_7430(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_A | P_B | P_C | P_D | P_E | P_F | P_GND | BIT_L7);
         Direct_H=(BIT_H7 | P_NC1 | P_NC2 | P_G | P_H | P_NC3 | P_VCC);
         Port_L=0;
@@ -39,7 +40,8 @@ void test_7430(void)
         res &= ((Pin_L==(P_A | P_B | P_C | P_D | P_E | P_F)) && (Pin_H==(P_NC1 | P_NC2 | P_G | P_H | P_NC3 | P_VCC)));
 
         Port_L=0;
-        Port_H=0;                                        
+        Port_H=0;
+	return res;                                        
     }
 
 

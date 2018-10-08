@@ -19,8 +19,9 @@
 /* /RST Q1 /Q1 D1 D2 /Q2 Q2 GND CLK Q3 /Q3 D3 D4 /Q4 Q4 VCC */
 /* 74175 4-bit D flip-flop with complementary outputs and reset. */
 
-void test_74175(void)
-    {
+uint8_t test_74175(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_nRST | P_D1 | P_D2 | P_GND);
         Direct_H=(P_CLK | P_D3 | P_D4 | P_VCC);    
         Port_H=(P_VCC);
@@ -59,6 +60,7 @@ void test_74175(void)
 
         Port_L = 0;
         Port_H = 0;
+	return res;
     }
 
 

@@ -22,8 +22,9 @@
 
 /* /OE Q1 D1 D2 Q2 Q3 D3 D4 Q4 GND CLK Q5 D5 D6 Q6 Q7 D7 D8 Q8 VCC */
 /* 74374 8-bit 3-state D flip-flop. */ 
-void test_74374(void)
-    {
+uint8_t test_74374(void)
+{
+		uint8_t res = 1;
         Direct_L=(P_nOE | P_D1 | P_D2 | P_D3 | P_D4);
         Direct_H=(P_D5 | P_D6 | P_D7 | P_D8 | P_VCC);
         DDRE=2;
@@ -46,6 +47,7 @@ void test_74374(void)
         Port_L=0;
         Port_H=0;
         PORTE=0;            
+	return res;
     }
 
 
