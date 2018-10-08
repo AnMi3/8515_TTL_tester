@@ -21,7 +21,6 @@
 uint8_t test_74161(void)
 {
 		uint8_t res = 1;
-        char i=0;
         Direct_L=(P_nRST | P_CLK | P_P0 | P_P1 | P_P2 | P_P3 | P_ENP | P_GND);
         Direct_H=(P_nLOAD | P_ENT | P_VCC);
         Port_H=(P_nLOAD | P_VCC);
@@ -63,7 +62,8 @@ uint8_t test_74161(void)
         delay1ms();
         res &= ((Pin_L==(P_nRST | P_CLK | P_P0 | P_P1 | P_P2)) && (Pin_H==(P_nLOAD | P_ENT | P_Q3 | P_Q0 | P_VCC)));
 
-        for (i= 0;i<6;i++) {
+        for (uint8_t i= 0;i<6;i++)
+	{
             Port_L = (P_nRST | P_P0 | P_P1 | P_P2 | P_ENP);    //CLK
             delay1ms();
             Port_L = (P_nRST | P_CLK | P_P0 | P_P1 | P_P2 | P_ENP);    //CLK

@@ -1,10 +1,12 @@
 #include "ictester.h"
 
-
 uint8_t sym[4], seg;
 
-const uint8_t znak[] PROGMEM = {215,17,203,91,29,94,222,19,223,95, 15,216 ,66,0,206,142,204,198}; /* symbols codes */
-const uint8_t razr[] PROGMEM = {128,64,32,16}; /* segment select constants */
+ /* symbols codes */
+const uint8_t znak[] PROGMEM = { 215,17,203,91,29,94,222,19,223,95, 15,216 ,66,0,206,142,204,198 };
+
+/* segment select constants */
+const uint8_t razr[] PROGMEM = { 128,64,32,16 };
 
 #include "delay.c"
 
@@ -50,24 +52,24 @@ const uint8_t razr[] PROGMEM = {128,64,32,16}; /* segment select constants */
 
 const struct chip
 {
-    uint8_t (*test)();
-    uint8_t sym[3];
-} chips[] = 
+	uint8_t (*test)();
+	uint8_t sym[3];
+} chips[] =
 { // not more than 254 IC!!!
-	{ test_7400,	{ 0x00, 13, 13 } }, 
+	{ test_7400,	{ 0x00, 13, 13 } },
 	{ test_7402,	{ 0x02, 13, 13 } },
 	{ test_7404,	{ 0x04, 13, 13 } },
 	{ test_7406,	{ 0x06, 13, 13 } },
 	{ test_7407,	{ 0x07, 13, 13 } },
-	{ test_7408,	{ 0x08, 13, 13 } },        
-	{ test_7410,	{ 0x10, 13, 13 } }, 
-	{ test_7411,	{ 0x11, 13, 13 } }, 
+	{ test_7408,	{ 0x08, 13, 13 } },
+	{ test_7410,	{ 0x10, 13, 13 } },
+	{ test_7411,	{ 0x11, 13, 13 } },
 	{ test_7420,	{ 0x20, 13, 13 } },
 	{ test_7427,	{ 0x27, 13, 13 } },
 	{ test_7430,	{ 0x30, 13, 13 } },
 	{ test_7432,	{ 0x32, 13, 13 } },
 	{ test_7438,	{ 0x38, 13, 13 } },
-	{ test_7474,	{ 0x74, 13, 13 } }, 
+	{ test_7474,	{ 0x74, 13, 13 } },
 	{ test_7475,	{ 0x75, 13, 13 } },
 	{ test_7486,	{ 0x86, 13, 13 } },
 	{ test_7493,	{ 0x93, 13, 13 } },
@@ -75,7 +77,7 @@ const struct chip
 	{ test_74138,	{ 0x38,  1, 13 } },
 	{ test_74155,	{ 0x55,  1, 13 } },
 	{ test_74161,	{ 0x61,  1, 13 } },
-	{ test_74166,	{ 0x66,  1, 13 } }, 
+	{ test_74166,	{ 0x66,  1, 13 } },
 	{ test_74169,	{ 0x69,  1, 13 } },
 	{ test_74174,	{ 0x74,  1, 13 } },
 	{ test_74175,	{ 0x75,  1, 13 } },
@@ -95,6 +97,7 @@ const struct chip
 };
 
 #define _ICs (sizeof(chips)/sizeof(struct chip))
+
 
 /* interrupt for indicator update */
 ISR(TIMER0_OVF_vect)
@@ -138,14 +141,14 @@ uint8_t search(void)
 		if ( test(i) == 1 )
 			return i;
 
+	/* not found */
 	sym[0] = sym[1] = sym[2] = sym[3] = 11;
-	return 255;	// not found
+	return 255;
 }
 
 int main(void)
-{
-	uint8_t sel = 0;
-	
+{	
+	/* Initialize ports */
 	Port_H = 0x00;
 	Direct_H = 0x00;
 
@@ -161,53 +164,59 @@ int main(void)
 	PORTE = 0x00;
 	DDRE = 0x00;
 
+	/* Init timer */
 	TCCR0 = 0x03;
 	TCNT0 = 0x00;
 	OCR0 = 0x00;
-
 	TIMSK = 0x02;
 
+	/* Init indicator */
 	seg = 0;
 	sym[3] = 16;
 	sym[2] = 14;
 	sym[1] = 5;
 	sym[0] = 16;
 
-	sei();		// enable interrupts
+	uint8_t sel = 0;
 
+	sei();							/* enable interrupts */
+
+	/* keys loop */
 	for( ; ; )
     {
-		// Key UP
+		/* Key UP */
         if( key_UP == 0 )
 		{
 			sel = (sel < _ICs) ? sel + 1 : 0;
             menu(sel);
 			delay200ms();
         }
-        while( key_UP == 0 );
+        while( key_UP == 0 );		/* wait for release key */
 
-		// Key DOWN
+		/* Key DOWN */
         if( key_DN == 0 )
 		{
 			sel = ( sel > 0 ) ? sel - 1 : _ICs;
             menu(sel);
 			delay200ms();
         }     
-        while( key_DN == 0 );
+        while( key_DN == 0 );		/* wait for release key */
 
-		// Key SEARCH
+		/* Key SEARCH */
         if( key_SEARCH == 0 )
 			sel = search();
-        while(key_SEARCH==0);
+        while( key_SEARCH == 0 );	/* wait for release key */
         
-		// Key TEST
+		/* Key TEST */
 		if( key_TEST == 0 ) 
         {
-			if ( sel < _ICs )   // for safety
+			if ( sel < _ICs )		/* for safety */
 				test(sel);
 			delay200ms();  
 		}
+		while( key_TEST == 0 );		/* wait for release key */
     }
+	
 	return 0;
 }
                         
