@@ -7,14 +7,14 @@ void test_019(void)
         Port_H=(BIT_H6 | BIT_H5 | BIT_H4 | BIT_H3 | BIT_H2 | BIT_H0);
         Port_L=(BIT_L2 | BIT_L3 | BIT_L4 | BIT_L5);
         Port_H=(BIT_H6 | BIT_H5 | BIT_H4 | BIT_H3 | BIT_H0); 
-        delay_ms(1);       
+        delay1ms();       
         res &= ((Pin_L==0) && (Pin_H==(BIT_H0)));
 
         Port_L=(BIT_L0 | BIT_L2 | BIT_L3 | BIT_L4 | BIT_L5);
         Port_L=(BIT_L2 | BIT_L3 | BIT_L4 | BIT_L5);
         Port_H=(BIT_H6 | BIT_H5 | BIT_H4 | BIT_H3 | BIT_H1 | BIT_H0);
         Port_H=(BIT_H6 | BIT_H5 | BIT_H4 | BIT_H3 | BIT_H0);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(BIT_L2)) && (Pin_H==(BIT_H3 | BIT_H0)));
 
         for (n=0;n<14;n++) {    
@@ -22,7 +22,7 @@ void test_019(void)
             Port_L=(BIT_L2 | BIT_L3 | BIT_L4 | BIT_L5);
             Port_H=(BIT_H6 | BIT_H5 | BIT_H4 | BIT_H3 | BIT_H1 | BIT_H0);
             Port_H=(BIT_H6 | BIT_H5 | BIT_H4 | BIT_H3 | BIT_H0);}
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(BIT_L2 | BIT_L3 | BIT_L4 | BIT_L5)) && (Pin_H==(BIT_H6 | BIT_H5 | BIT_H4 | BIT_H3 | BIT_H0)));
 
         Port_L=0;

@@ -25,48 +25,48 @@ void test_74161(void)
         Direct_H=(P_nLOAD | P_ENT | P_VCC);
         Port_H=(P_nLOAD | P_VCC);
         Port_L=0;   //Clear
-        delay_ms(1);
+        delay1ms();
         Port_L=(P_CLK);   //CLK
-        delay_ms(1);                
+        delay1ms();                
         res &= ((Pin_L==(P_CLK)) && (Pin_H==(P_nLOAD | P_VCC)));
 
 
         Port_L=(P_nRST);   //CLK   
-        delay_ms(1);
+        delay1ms();
         Port_L = (P_nRST | P_P0 | P_P1 | P_P2); //D=0,A=B=C=1, CLK = 0        
         Port_H=(P_VCC);   //Load
-        delay_ms(1);
+        delay1ms();
         Port_L = (P_nRST | P_CLK | P_P0 | P_P1 | P_P2); //D=0,A=B=C=1, CLK = 1
-        delay_ms(1);
+        delay1ms();
         Port_H=(P_nLOAD | P_ENT | P_VCC);  //ENT=1
         Port_L=(P_nRST | P_CLK | P_P0 | P_P1 | P_P2 | P_ENP);   //ENP=1
-        delay_ms(1);        
+        delay1ms();        
         Port_L=(P_nRST | P_P0 | P_P1 | P_P2 | P_ENP);  //CLK
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_nRST | P_P0 | P_P1 | P_P2 | P_ENP)) && (Pin_H==(P_nLOAD | P_ENT | P_Q2 | P_Q1 | P_Q0 | P_VCC)));
 
         Port_L = (P_nRST | P_CLK | P_P0 | P_P1 | P_P2 | P_ENP);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_nRST | P_CLK | P_P0 | P_P1 | P_P2 | P_ENP)) && (Pin_H==(P_nLOAD | P_ENT | P_Q3 | P_VCC)));
 
         Port_L = (P_nRST | P_P0 | P_P1 | P_P2 | P_ENP);    //CLK
-        delay_ms(1);
+        delay1ms();
         Port_L = (P_nRST | P_CLK | P_P0 | P_P1 | P_P2 | P_ENP);    //CLK
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_nRST | P_CLK | P_P0 | P_P1 | P_P2 | P_ENP)) && (Pin_H==(P_nLOAD | P_ENT | P_Q3 | P_Q0 | P_VCC)));
 
            
         Port_L = (P_nRST | P_P0 | P_P1 | P_P2);    //CLK
-        delay_ms(1);
+        delay1ms();
         Port_L = (P_nRST | P_CLK | P_P0 | P_P1 | P_P2);    //CLK
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_nRST | P_CLK | P_P0 | P_P1 | P_P2)) && (Pin_H==(P_nLOAD | P_ENT | P_Q3 | P_Q0 | P_VCC)));
 
         for (i= 0;i<6;i++) {
             Port_L = (P_nRST | P_P0 | P_P1 | P_P2 | P_ENP);    //CLK
-            delay_ms(1);
+            delay1ms();
             Port_L = (P_nRST | P_CLK | P_P0 | P_P1 | P_P2 | P_ENP);    //CLK
-            delay_ms(1);
+            delay1ms();
         }
         res &= ((Pin_L==(P_nRST | P_CLK | P_P0 | P_P1 | P_P2 | P_ENP)) && (Pin_H==(P_nLOAD | P_ENT | P_Q3 | P_Q2 | P_Q1 | P_Q0 | P_RCO | P_VCC)));
 

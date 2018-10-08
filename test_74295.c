@@ -25,7 +25,7 @@ void test_74295(void)
         Port_H=(P_OE | P_VCC);
         Port_H=(P_OE | P_nCLK | P_VCC);
         Port_L=0;
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==0) && (Pin_H==(P_OE | P_nCLK | P_VCC)));
 
         Port_L=(P_D);
@@ -45,7 +45,7 @@ void test_74295(void)
         Port_H=(P_OE | P_VCC);
         Port_H=(P_OE | P_nCLK | P_VCC);
         Port_L=0;
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==0) && (Pin_H==(P_OE | P_nCLK | P_VCC)));
 
         Port_L=0;

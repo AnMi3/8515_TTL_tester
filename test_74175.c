@@ -25,36 +25,36 @@ void test_74175(void)
         Direct_H=(P_CLK | P_D3 | P_D4 | P_VCC);    
         Port_H=(P_VCC);
         Port_L=0;
-        delay_ms(1);
+        delay1ms();
         Port_L=(P_nRST);
-        delay_ms(1);
+        delay1ms();
         res &= ( ( Pin_L == (P_nRST | P_nQ1 | P_nQ2)) && ( Pin_H  == (P_nQ3 | P_nQ4 | P_VCC)) );
         Port_L = (P_nRST | P_D1);
         Port_H = (P_D4 | P_VCC);
         Port_H = (P_CLK | P_D4 | P_VCC);
         Port_H = (P_VCC);
-        delay_ms(1);        
+        delay1ms();        
         res &= ((Pin_L == (P_nRST | P_Q1 | P_D1 | P_nQ2)) && (Pin_H == (P_nQ3 | P_Q4 | P_VCC)) && res == 1);
 
         Port_L = (P_nRST | P_D2);
         Port_H = (P_D3 | P_VCC);
         Port_H = (P_CLK | P_D3 | P_VCC);    
         Port_H = (P_VCC);
-        delay_ms(1);        
+        delay1ms();        
         res &= ((Pin_L == (P_nRST | P_nQ1 | P_D2 | P_Q2)) && (Pin_H == (P_Q3 | P_nQ4 | P_VCC)) && res == 1);
 
         Port_L = (P_nRST);
         Port_H = (P_VCC);
         Port_H = (P_CLK | P_VCC);    
         Port_H = (P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L == (P_nRST | P_nQ1 | P_nQ2)) && (Pin_H == (P_nQ3 | P_nQ4 | P_VCC)) && res == 1);
 
         Port_L = (P_nRST | P_D1 | P_D2);
         Port_H = (P_D3 | P_D4 | P_VCC);
         Port_H = (P_CLK | P_D3 | P_D4 | P_VCC);    
         Port_H = (P_D3 | P_D4 | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L == (P_nRST | P_Q1 | P_D1 | P_D2 | P_Q2)) && (Pin_H == (P_Q3 | P_D3 | P_D4 | P_Q4 | P_VCC)) && res == 1);
 
         Port_L = 0;

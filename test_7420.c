@@ -21,7 +21,7 @@ void test_7420(void)
         Direct_H=(BIT_H7 | P_2A | P_2B | P_NC2 | P_2C | P_2D | P_VCC);
         Port_L=(P_n1Y);
         Port_H=(P_n2Y | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_n1Y)) && (Pin_H==(P_n2Y | P_VCC)));
 
         Port_L=(P_1A | P_n1Y);

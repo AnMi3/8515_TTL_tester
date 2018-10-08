@@ -24,36 +24,36 @@ void test_74138(void)
         Direct_H=(P_VCC);
         Port_L=(P_EN1);
         Port_H=(P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_EN1 | P_nY7)) && (Pin_H==(P_nY6 | P_nY5 | P_nY4 | P_nY3 | P_nY2 | P_nY1 | P_VCC)));
 
         Port_L=(P_S0 | P_EN1);
         Port_H=(P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_S0 | P_EN1 | P_nY7)) && (Pin_H==(P_nY6 | P_nY5 | P_nY4 | P_nY3 | P_nY2 | P_nY0 | P_VCC)));
 
         Port_L=(P_S1 | P_EN1);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_S1 | P_EN1 | P_nY7)) && (Pin_H==(P_nY6 | P_nY5 | P_nY4 | P_nY3 | P_nY1 | P_nY0 | P_VCC)));
 
         Port_L=(P_S0 | P_S1 | P_EN1);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_S0 | P_S1 | P_EN1 | P_nY7)) && (Pin_H==(P_nY6 | P_nY5 | P_nY4 | P_nY2 | P_nY1 | P_nY0 | P_VCC)));
 
         Port_L=(P_S2 | P_EN1);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_S2 | P_EN1 | P_nY7)) && (Pin_H==(P_nY6 | P_nY5 | P_nY3 | P_nY2 | P_nY1 | P_nY0 | P_VCC)));
 
         Port_L=(P_S0 | P_S2 | P_EN1);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_S0 | P_S2 | P_EN1 | P_nY7)) && (Pin_H==(P_nY6 | P_nY4 | P_nY3 | P_nY2 | P_nY1 | P_nY0 | P_VCC)));
 
         Port_L=(P_S1 | P_S2 | P_EN1);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_S1 | P_S2 | P_EN1 | P_nY7)) && (Pin_H==(P_nY5 | P_nY4 | P_nY3 | P_nY2 | P_nY1 | P_nY0 | P_VCC)));
 
         Port_L=(P_S0 | P_S1 | P_S2 | P_EN1);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_S0 | P_S1 | P_S2 | P_EN1)) && (Pin_H==(P_nY6 | P_nY5 | P_nY4 | P_nY3 | P_nY2 | P_nY1 | P_nY0 | P_VCC)));
 
         Port_L=0;

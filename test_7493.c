@@ -23,34 +23,34 @@ void test_7493(void)
         Port_H=0;        
         Port_L=(P_RST1 | P_RST2 | P_VCC);
         Port_L=(P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= (Pin_H==0);
 
         Port_H=(P_nCLK0);
         Port_H=0;
-        delay_ms(1);       
+        delay1ms();       
         res &= ((Pin_H==(P_Q0)));
 
         Port_L=(P_nCLK1 | P_VCC);
         Port_L=(P_VCC);
-        delay_ms(1);       
+        delay1ms();       
         res &= ((Pin_H==(P_Q1 | P_Q0)));
 
         Port_L=(P_nCLK1 | P_VCC);
         Port_L=(P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_H==(P_Q2 | P_Q0)));
 
         Port_L=(P_nCLK1 | P_VCC);
         Port_L=(P_VCC);
         Port_L=(P_nCLK1 | P_VCC);
         Port_L=(P_VCC);
-        delay_ms(1);    
+        delay1ms();    
         res &= ((Pin_H==(P_Q3 | P_Q0)));
 
         Port_L=(P_RST1 | P_RST2 | P_VCC);
         Port_L=(P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_H==0));
 
         Port_L=0;

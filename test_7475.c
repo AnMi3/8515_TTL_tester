@@ -28,7 +28,7 @@ void test_7475(void)
         Port_H=(P_2Q2 | P_2Q1 | P_n2Q1 | P_1LE | P_n1Q2 | P_1Q2 | P_1Q1);
         Port_L=(P_n1Q1 | P_VCC | P_n2Q2);
         Port_H=(P_2Q2 | P_2Q1 | P_n2Q1 | P_n1Q2 | P_1Q2 | P_1Q1);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_n1Q1 | P_VCC | P_n2Q2)) && (Pin_H==(P_n2Q1 | P_n1Q2)));
 
         Port_L=(P_n1Q1 | P_1D1 | P_1D2 | P_VCC | P_2D1 | P_2D2 | P_n2Q2);

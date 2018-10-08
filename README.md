@@ -2,6 +2,8 @@
 ## Description
 This is tester for TTL integrated circuts (mainly for 74xx series).  
 It had been originally developed by Ewgeny7 (initial thread on Russian forum: http://zx-pk.ru/threads/16638-tester-melkoj-logiki-na-mega8515.html).  
+It was published by atsidaev (https://github.com/atsidaev/8515_TTL_tester/)
+It was forked by me 08 October 2018
 
 ## Supported chips (Russian analogue in parentheses)
 
@@ -44,4 +46,5 @@ It had been originally developed by Ewgeny7 (initial thread on Russian forum: ht
 580ИР83
 
 ## Build information
-You need CodeVision AVR to build this project. gcc version is in progress.
+Original build was for CodeVision AVR.
+Now it is for Atmel AVR Studio 7

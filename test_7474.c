@@ -23,7 +23,7 @@ void test_7474(void)
         Port_H=(P_n2SET | P_VCC);
         Port_L=(P_n1RST | P_n1SET);
         Port_H=(P_n2SET | P_n2RST | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_n1RST | P_n1SET | P_n1Q)) && (Pin_H==(P_n2Q | P_n2SET | P_n2RST | P_VCC)));
 
         Port_L=(P_n1RST | P_1D | P_n1SET);

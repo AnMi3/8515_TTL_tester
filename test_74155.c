@@ -24,44 +24,44 @@ void test_74155(void)
         Direct_H=(P_S0 | P_n2EN2 | P_n2EN1 | P_VCC);
         Port_L=(P_n1EN2);
         Port_H=(P_n2EN2 | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_n1EN2 | P_n1Y3 | P_n1Y2 | P_n1Y1 | P_n1Y0)) && (Pin_H==(P_n2Y0 | P_n2Y1 | P_n2Y2 | P_n2Y3 | P_n2EN2 | P_VCC)));
         Port_L = 0;
         Port_H = (P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_n1Y3 | P_n1Y2 | P_n1Y1 | P_n1Y0)) && (Pin_H==(P_n2Y1 | P_n2Y2 | P_n2Y3 | P_VCC)));
 
         Port_L = 0;
         Port_H = (P_S0 | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_n1Y3 | P_n1Y2 | P_n1Y1 | P_n1Y0)) && (Pin_H==(P_n2Y0 | P_n2Y2 | P_n2Y3 | P_S0 | P_VCC)));
 
         Port_L = (P_S1);
         Port_H = (P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_S1 | P_n1Y3 | P_n1Y2 | P_n1Y1 | P_n1Y0)) && (Pin_H==(P_n2Y0 | P_n2Y1 | P_n2Y3 | P_VCC)));
 
         Port_L = (P_S1);
         Port_H = (P_S0 | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_S1 | P_n1Y3 | P_n1Y2 | P_n1Y1 | P_n1Y0)) && (Pin_H==(P_n2Y0 | P_n2Y1 | P_n2Y2 | P_S0 | P_VCC)));
 
         Port_L = (P_1EN1);
         Port_H = (P_n2EN1 | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_1EN1 | P_n1Y3 | P_n1Y2 | P_n1Y1)) && (Pin_H==(P_n2Y0 | P_n2Y1 | P_n2Y2 | P_n2Y3 | P_n2EN1 | P_VCC)));
 
         Port_H = (P_S0 | P_n2EN1 | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_1EN1 | P_n1Y3 | P_n1Y2 | P_n1Y0)) && (Pin_H==(P_n2Y0 | P_n2Y1 | P_n2Y2 | P_n2Y3 | P_S0 | P_n2EN1 | P_VCC)));
 
         Port_L = (P_1EN1 | P_S1);
         Port_H = (P_n2EN1 | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_1EN1 | P_S1 | P_n1Y3 | P_n1Y1 | P_n1Y0)) && (Pin_H==(P_n2Y0 | P_n2Y1 | P_n2Y2 | P_n2Y3 | P_n2EN1 | P_VCC)));
 
         Port_H = (P_S0 | P_n2EN1 | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_1EN1 | P_S1 | P_n1Y2 | P_n1Y1 | P_n1Y0)) && (Pin_H==(P_n2Y0 | P_n2Y1 | P_n2Y2 | P_n2Y3 | P_S0 | P_n2EN1 | P_VCC)));
 
         Port_L=0;

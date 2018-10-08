@@ -27,17 +27,17 @@ void test_74193(void)
         Port_H=(P_P3 | P_P2 | P_nLOAD | P_P0 | P_VCC);
         Port_H=(P_P3 | P_P2 | P_nLOAD | P_RST | P_P0 | P_VCC);
         Port_H=(P_P3 | P_P2 | P_nLOAD | P_P0 | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= (Pin_L==(P_P1 | P_DOWN));
 
         Port_L=(P_P1 | P_Q1 | P_Q0 | P_DOWN | P_UP | P_Q2 | P_Q3);
         Port_L=(P_P1 | P_Q1 | P_Q0 | P_DOWN | P_Q2 | P_Q3);
-        delay_ms(1);       
+        delay1ms();       
         res &= ((Pin_L==(P_P1 | P_Q0 | P_DOWN)));
 
         Port_L=(P_P1 | P_Q1 | P_Q0 | P_DOWN | P_UP | P_Q2 | P_Q3);
         Port_L=(P_P1 | P_Q1 | P_Q0 | P_DOWN | P_Q2 | P_Q3);
-        delay_ms(1);       
+        delay1ms();       
         res &= ((Pin_L==(P_P1 | P_Q1 | P_DOWN)));
 
         Port_L=(P_P1 | P_Q1 | P_Q0 | P_DOWN | P_UP | P_Q2 | P_Q3);

@@ -43,13 +43,13 @@ void test_74245(void)
         Port_L=0;
         Port_H=(P_B5 | P_B3 | P_B1 | P_VCC);
         PORTE=4;
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_A1 | P_A3 | P_A5 | P_A7)) && (Pin_H==(P_B5 | P_B3 | P_B1 | P_VCC)) && (PINE==4));
 
         Port_L=0;
         Port_H=(P_B6 | P_B4 | P_B2 | P_VCC);
         PORTE=2;
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_L==(P_A2 | P_A4 | P_A6)) && (Pin_H==(P_B6 | P_B4 | P_B2 | P_VCC)) && (PINE==3));
 
         Port_L=0;

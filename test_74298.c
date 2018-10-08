@@ -26,26 +26,26 @@ void test_74298(void)
         Port_H=(P_3A0 | P_VCC);
         Port_H=(P_3A0 | P_CLK | P_VCC);
         Port_H=(P_3A0 | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= (Pin_H==(P_3A0 | P_3Q | P_1Q | P_VCC));
 
         Port_H=(P_3A0 | P_S | P_VCC);
         Port_H=(P_3A0 | P_S | P_CLK | P_VCC);
         Port_H=(P_3A0 | P_S | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_H==(P_3A0 | P_S | P_4Q | P_2Q | P_VCC)));
 
         Port_L=(P_2A0 | P_1A1 | P_3A1 | P_4A0);
         Port_H=(P_VCC);
         Port_H=(P_CLK | P_VCC);
         Port_H=(P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_H==(P_4Q | P_2Q | P_VCC)));
 
         Port_H=(P_S | P_VCC);
         Port_H=(P_S | P_CLK | P_VCC);
         Port_H=(P_S | P_VCC);
-        delay_ms(1);
+        delay1ms();
         res &= ((Pin_H==(P_S | P_3Q | P_1Q | P_VCC)));
 
         Port_L=0;
