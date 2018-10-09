@@ -2,8 +2,18 @@
 
 uint8_t sym[4], seg;
 
- /* symbols codes */
-const uint8_t znak[] PROGMEM = { 215,17,203,91,29,94,222,19,223,95, 15,216 ,66,0,206,142,204,198 };
+ /* encoded symbols for 7 segment indicators */
+const uint8_t znak[] PROGMEM = { 
+	215,17,203,91,29,94,222,19,223,95,	/* [0-9] digits 0-9 */
+	15, 8,								/* [10,11] Good(o), Bad(-) symbols */
+	66,									/* [12] two horizontal lines as a testing process indicator */
+	0,									/* [13] empty symbol */
+	206,								/* [14] letter E */
+	142,								/* [15] letter F */  /* not used yet */
+	204,								/* [16] letter t */
+	198,								/* [17] letter C */
+	136,								/* [18] letter r */
+};
 
 /* segment select constants */
 const uint8_t razr[] PROGMEM = { 128,64,32,16 };
@@ -89,7 +99,7 @@ const struct chip
 	{ test_74295,	{ 0x95,  2, 13 } },
 	{ test_74298,	{ 0x98,  2, 13 } },
 	{ test_74374,	{ 0x74,  3, 13 } },
-	{ test_C4520,	{ 0x20, 17, 13 } },
+	{ test_C4520,	{ 0x20, 17, 13 } }, /* C20 on Display */
 	{ test_011,		{ 0x11, 12, 13 } },
 	{ test_019,		{ 0x19, 12, 13 } },
 	{ test_082,		{ 0x82, 12, 13 } },
@@ -110,12 +120,11 @@ ISR(TIMER0_OVF_vect)
 
 uint8_t test(uint8_t ic_num)
 {
-    sym[0] = 12;					/* two horizontal lines as a testing process indicator */
-
     /* set IC number for indicator */
-	sym[1] = chips[ic_num].sym[0] & 0x07;
-    sym[2] = (chips[ic_num].sym[0] >> 4) & 0x07;
     sym[3] = chips[ic_num].sym[1];
+    sym[2] = (chips[ic_num].sym[0] >> 4) & 0x07;
+	sym[1] = chips[ic_num].sym[0] & 0x07;
+    sym[0] = 12;					/* two horizontal lines as a testing process indicator */
     
     /* start test for selected IC */
 	uint8_t res = chips[ic_num].test();
@@ -141,8 +150,11 @@ uint8_t search(void)
 		if ( test(i) == 1 )
 			return i;
 
-	/* not found */
-	sym[0] = sym[1] = sym[2] = sym[3] = 11;
+	/* not found, print "Err" */
+	sym[3] = 14; /* E */
+	sym[2] = 18; /* r */
+	sym[1] = 18; /* r */
+	sym[0] = 13; /* empty */
 	return 255;
 }
 
@@ -172,10 +184,10 @@ int main(void)
 
 	/* Init indicator */
 	seg = 0;
-	sym[3] = 16;
-	sym[2] = 14;
-	sym[1] = 5;
-	sym[0] = 16;
+	sym[3] = 16;	/* t */
+	sym[2] = 14;	/* E */
+	sym[1] = 5;		/* S */
+	sym[0] = 16;	/* t */
 
 	uint8_t sel = 0;
 
