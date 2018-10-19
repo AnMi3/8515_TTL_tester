@@ -109,6 +109,17 @@ const struct chip
 #define _ICs (sizeof(chips)/sizeof(struct chip))
 
 
+//uint8_t test2(uint8_t IC)
+//{
+	/* We have ZIF-24 */
+	/* Pins 1-8 on PortC, Pins 23-17 on PortA */
+	/* Pins 9,15,16 on PortE, 10,11,15,16 on PortB */
+	//uint8_t pinsC = 00000000b;  // 0 - output, 1 - input
+	//uint8_t pinsA = 00000000b;  // 0 - output, 1 - input
+	//uint8_t pinsBE = 00000000b; // 0 - output, 1 - input
+	
+//}
+
 /* interrupt for indicator update */
 ISR(TIMER0_OVF_vect)
 {
@@ -122,8 +133,8 @@ uint8_t test(uint8_t ic_num)
 {
     /* set IC number for indicator */
     sym[3] = chips[ic_num].sym[1];
-    sym[2] = (chips[ic_num].sym[0] >> 4) & 0x07;
-	sym[1] = chips[ic_num].sym[0] & 0x07;
+    sym[2] = (chips[ic_num].sym[0] >> 4) & 0x0F;
+	sym[1] = chips[ic_num].sym[0] & 0x0F;
     sym[0] = 12;					/* two horizontal lines as a testing process indicator */
     
     /* start test for selected IC */
@@ -137,8 +148,8 @@ void menu(uint8_t sel)
 {
 	if ( sel < _ICs )   // for safety
 	{
-		sym[0] = chips[sel].sym[0] & 0x07;
-		sym[1] = (chips[sel].sym[0] >> 4) & 0x07;
+		sym[0] = chips[sel].sym[0] & 0x0F;
+		sym[1] = (chips[sel].sym[0] >> 4) & 0x0F;
 		sym[2] = chips[sel].sym[1];
 		sym[3] = chips[sel].sym[2];
 	}
