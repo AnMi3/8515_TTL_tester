@@ -4,7 +4,6 @@
 /* PINS: 1A 1B NC 1C 1D n1Y GND :: n2Y 2A 2B NC 2C 2D VCC */
 
 case 20:
-	res = 1;
 
 // left pins
 #define P_1A	BIT_L0

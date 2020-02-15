@@ -4,7 +4,6 @@
 /* PINS: A B C D E F GND :: nY NC NC G H NC VCC */
 
 case 30:
-	res = 1;
 
 // left pins
 #define P_A	BIT_L0

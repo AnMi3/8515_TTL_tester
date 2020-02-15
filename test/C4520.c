@@ -4,7 +4,6 @@
 /* PINS: 1CP0 n1CP1 1Q0 1Q1 1Q2 1Q3 1MR GND :: 2CP0 n2CP1 2Q0 2Q1 2Q2 2Q3 2MR VCC */
 
 case 4520:
-	res = 1;
 
 // left pins
 #define P_1CP0	BIT_L0

@@ -4,7 +4,6 @@
 /* PINS: nRST CLK P0 P1 P2 P3 ENP GND :: nLOAD ENT Q3 Q2 Q1 Q0 RCO VCC */
 
 case 161:
-	res = 1;
 
 // left pins
 #define P_nRST	BIT_L0

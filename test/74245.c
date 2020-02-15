@@ -4,7 +4,6 @@
 /* PINS: DIR A1 A2 A3 A4 A5 A6 A7 A8 GND :: B8 B7 B6 B5 B4 B3 B2 B1 nEN VCC */
 
 case 245:
-	res = 1;
 
 // left pins
 #define P_DIR	BIT_L0

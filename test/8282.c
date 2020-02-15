@@ -4,7 +4,7 @@
 /* PINS: D0 D1 D2 D3 D4 D5 D6 D7 nOE GND :: STB Q7 Q6 Q5 Q4 Q3 Q2 Q1 Q0 VCC */
 
 case 8282:
-	res = 1;
+
 /*
 	Truth table
 	STB	nOE	D	Q

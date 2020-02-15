@@ -4,7 +4,6 @@
 /* PINS: nCLK1 RST1 RST2 NC VCC NC NC :: Q2 Q1 GND Q3 Q0 NC nCLK0 */
 
 case 93:
-	res = 1;
 
 // left pins
 #define P_nCLK1	BIT_L0

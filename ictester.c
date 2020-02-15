@@ -90,7 +90,7 @@ uint8_t test(uint8_t ic_num)
     sym[0] = 12;					/* two horizontal lines as a testing process indicator */
     
     /* start test for selected IC */
-	uint8_t res = 0;
+	uint8_t res = 1;
 	switch(chips[ic_num].code)
 	{
 #include "test\\74_00.c"

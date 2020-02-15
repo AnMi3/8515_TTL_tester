@@ -4,7 +4,6 @@
 /* PINS: P1 Q1 Q0 DOWN UP Q2 Q3 GND :: P3 P2 nLOAD nCARRY nBORROW RST P0 VCC */
 
 case 193:
-	res = 1;
 
 // left pins
 #define P_P1	BIT_L0

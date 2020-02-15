@@ -4,7 +4,6 @@
 /* PINS: n1OE 1A 1Y 2A 2Y 3A 3Y GND :: 4Y 4A 5Y 5A 6Y 6A n2OE VCC */
 
 case 367:
-	res = 1;
 
 // left pins
 #define P_n1OE	BIT_L0

@@ -4,7 +4,6 @@
 /* PINS: 2A1 2A0 1A0 1A1 3A1 4A1 4A0 GND :: 3A0 S CLK 4Q 3Q 2Q 1Q VCC */
 
 case 298:
-	res = 1;
 
 // left pins
 #define P_2A1	BIT_L0

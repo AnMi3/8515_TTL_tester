@@ -4,7 +4,6 @@
 /* PINS: U_D CLK P0 P1 P2 P3 nENP GND :: nLOAD nENT Q3 Q2 Q1 Q0 nRCO VCC */
 
 case 169:
-	res = 1;
 
 // left pins
 #define P_U_D	BIT_L0

@@ -4,7 +4,6 @@
 /* PINS: 1A 1B 1Y 2A 2B 2Y GND :: 3Y 3A 3B 4Y 4A 4B VCC */
 
 case 0:
-	res = 1;
 
 // left pins
 #define P_1A	BIT_L0

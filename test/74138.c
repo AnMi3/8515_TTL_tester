@@ -4,7 +4,6 @@
 /* PINS: S0 S1 S2 nEN3 nEN2 EN1 nY7 GND :: nY6 nY5 nY4 nY3 nY2 nY1 nY0 VCC */
 
 case 138:
-	res = 1;
 
 // left pins
 #define P_S0	BIT_L0

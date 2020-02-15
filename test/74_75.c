@@ -4,7 +4,6 @@
 /* PINS: n1Q1 1D1 1D2 2LE VCC 2D1 2D2 n2Q2 :: 2Q2 2Q1 n2Q1 GND 1LE n1Q2 1Q2 1Q1 */
 
 case 75:
-	res = 1;
 
 // left pins
 #define P_n1Q1	BIT_L0

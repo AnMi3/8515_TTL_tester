@@ -4,7 +4,6 @@
 /* PINS: n1RST 1D 1CLK n1SET 1Q n1Q GND :: n2Q 2Q n2SET 2CLK 2D n2RST VCC */
 
 case 74:
-	res = 1;
 
 // left pins
 #define P_n1RST	BIT_L0
